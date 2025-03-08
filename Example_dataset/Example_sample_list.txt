@@ -1,0 +1,4 @@
+Group1_Tophat_aligned_Wig=/opt/dapars/example_data/Condition_A_chrX.wig
+Group2_Tophat_aligned_Wig=/opt/dapars/example_data/Condition_B_chrX.wig
+Num_least_in_group1=1
+Num_least_in_group2=1
