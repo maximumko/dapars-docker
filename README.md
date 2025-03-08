@@ -9,7 +9,7 @@ This repository provides a Docker container for DaPars (Dynamic analysis of Alte
 ## Quick Start
 
 ```bash
-# Pull the image
+# Pull the image (X Currently unavailable, please refer to Build Containter)
 docker pull maximumko/dapars:1.0.0
 
 # Run the integrated workflow
