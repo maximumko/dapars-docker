@@ -22,7 +22,7 @@ USAGE MODES:
        docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 \\
          /opt/dapars/src/DaPars_Extract_Anno.py \\
          -b /data/gene.bed \\
-         -s /data/symbol_map.txt \\
+         -s /data/symbol_map.bed \\
          -o /data/extracted_3UTR.bed
 
      Step 2: Run DaPars main analysis
@@ -32,7 +32,7 @@ USAGE MODES:
   2. Integrated workflow (integrated):
        docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \\
          --gene-bed /data/gene.bed \\
-         --symbol-map /data/symbol_map.txt \\
+         --symbol-map /data/symbol_map.bed \\
          --sample-file /data/sample_list.txt \\
          --output-dir /data/output
   
@@ -67,7 +67,7 @@ EXAMPLE DATA:
 
 CITATION:
   Xia, Z., et al. (2014). Dynamic Analyses of Alternative Polyadenylation from 
-  RNA-Seq Reveal 3'-UTR Landscape Across 7 Tumor Types. 
+  RNA-Seq Reveal 3'-UTR Landscape Across Seven Tumor Types. 
   Nature Communications, 5:5274
 EOF
   exit 0
