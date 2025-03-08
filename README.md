@@ -83,8 +83,8 @@ Alignment files: Wig files for each sample (referenced in the sample list file)
 
 The sample list file should contain:
 ```
-Group1_Tophat_aligned_file=/data/sample1_condition1.wig,/data/sample2_condition1.wig
-Group2_Tophat_aligned_file=/data/sample1_condition2.wig,/data/sample2_condition2.wig
+Group1_Tophat_aligned_Wig=/data/sample1_condition1.wig,/data/sample2_condition1.wig
+Group2_Tophat_aligned_Wig=/data/sample1_condition2.wig,/data/sample2_condition2.wig
 Num_least_in_group1=1
 Num_least_in_group2=1
 ```
