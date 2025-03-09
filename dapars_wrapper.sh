@@ -13,18 +13,18 @@ USAGE MODES:
   1. Two-step workflow (original):
      
      Step 1: Generate region annotation
-       docker run -it --rm ghcr.io/maximumko/dapars-docker:latest \\
+       docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest \\
          /opt/dapars/src/DaPars_Extract_Anno.py \\
          -b /data/gene.bed \\
          -s /data/symbol_map.bed \\
          -o /data/extracted_3UTR.bed
 
      Step 2: Run DaPars main analysis
-       docker run -it --rm ghcr.io/maximumko/dapars-docker:latest \\
+       docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest \\
          /data/config_file.txt
 
   2. Integrated workflow (integrated):
-       docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
+       docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
          --gene-bed /data/gene.bed \\
          --symbol-map /data/symbol_map.bed \\
          --sample-file /data/sample_list.txt \\
@@ -52,7 +52,7 @@ EXAMPLE DATA:
   exit
 
   # Now you can run DaPars with the example data
-  docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
+  docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/RefSeq_hg19.bed \\
     --symbol-map /data/RefSeq_hg19_GeneName.bed \\
     --sample-file /data/Example_sample_list.txt \\
