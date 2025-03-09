@@ -2,7 +2,7 @@ FROM python:3.8-slim
 
 LABEL maintainer="Yi Zhang <yzhangmaximumko@gmail.com>"
 LABEL description="Docker container for DaPars (Dynamic analysis of Alternative PolyAdenylation from RNA-seq)"
-LABEL version="1.0.0"
+LABEL version="0.1.0"
 LABEL source="https://github.com/ZhengXia/dapars"
 
 # Install system dependencies and bedtools
@@ -41,5 +41,5 @@ ENV PYTHONPATH=/opt/dapars
 # Set working directory
 WORKDIR /data
 
-# Set entrypoint to our wrapper script
+# Set entrypoint to wrapper script
 ENTRYPOINT ["/usr/local/bin/dapars_wrapper.sh"]
