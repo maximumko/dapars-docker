@@ -2,18 +2,10 @@
 
 # Display help if requested
 if [[ "$1" == "--help" || "$1" == "-h" ]]; then
-  cat << EOF
-=======================================
- ______       _____               
-|  __ \\     |  __ \\             
-| |  | | __ _| |__) |_ _ _ __ ___ _ 
-| |  | |/ _\` |  ___/ _\` | '__/ __|
-| |__| | (_| | |  | (_| | |  \\__ \\
-|_____/ \\__,_|_|   \\__,_|_|  |___/
-
-Dynamic analysis of Alternative PolyA-
-denylation from RNA-seq. Version 1.0.0
-=======================================
+  figlet -f standard "DaPars"
+  echo "Dynamic analysis of Alternative PolyAdenylation from RNA-seq"
+  echo "Version 1.0.0"
+  echo "=================================================="
 
 USAGE MODES:
   1. Two-step workflow (original):
