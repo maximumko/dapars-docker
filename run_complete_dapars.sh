@@ -2,19 +2,10 @@
 
 # Display DaPars logo
 function display_logo {
-  cat << EOF
-=======================================
- ______       _____               
-|  __ \\     |  __ \\             
-| |  | | __ _| |__) |_ _ _ __ ___ _ 
-| |  | |/ _\` |  ___/ _\` | '__/ __|
-| |__| | (_| | |  | (_| | |  \\__ \\
-|_____/ \\__,_|_|   \\__,_|_|  |___/
-
-Dynamic analysis of Alternative PolyA-
-denylation from RNA-seq. Version 1.0.0
-=======================================
-EOF
+  figlet -f standard "DaPars"
+  echo "Dynamic analysis of Alternative PolyAdenylation from RNA-seq"
+  echo "Version 1.0.0"
+  echo "=================================================="
 }
 
 # Function to display help with proper formatting
