@@ -7,6 +7,8 @@ if [[ "$1" == "--help" || "$1" == "-h" ]]; then
   echo "Version 1.0.0"
   echo "=================================================="
 
+  cat << EOF
+
 USAGE MODES:
   1. Two-step workflow (original):
      
