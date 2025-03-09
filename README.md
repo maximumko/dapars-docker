@@ -7,13 +7,17 @@ This repository provides a Docker container for DaPars (Dynamic analysis of Alte
 ## About DaPars
 [DaPars](https://github.com/ZhengXia/dapars) is a bioinformatics tool that directly infers dynamic alternative polyadenylation (APA) usage by comparing standard RNA-seq data. Given the annotated gene model, DaPars can identify de novo proximal APA sites as well as quantify the long and short 3'UTR expression levels. This enables researchers to study changes in 3'UTR usage across different conditions.
 ## Quick Start
+### GitHub Container Registry
+Supports both x86_64 and ARM64 platforms (works on Apple Silicon Macs)
 
 ```bash
-# Pull the image (X Currently unavailable, please refer to Build Containter)
-docker pull maximumko/dapars:1.0.0
+# Pull the image 
+docker pull ghcr.io/maximumko/dapars-docker:latest
+
+
 
 # Run the integrated workflow
-docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \
+docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
   --gene-bed /data/gene.bed \
   --symbol-map /data/symbol_map.txt \
   --sample-file /data/sample_list.txt \
@@ -23,7 +27,7 @@ docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \
 #### 1. Two-step workflow (Original)
 ##### Step 1: Generate region annotation
 ```bash
-docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 \
+docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest \
   /opt/dapars/src/DaPars_Extract_Anno.py \
   -b /data/gene.bed \
   -s /data/symbol_map.bed \
@@ -31,13 +35,13 @@ docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 \
 ```
 ##### Step 2: Run DaPars main analysis
 ```bash
-docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 \
+docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest \
   /data/config_file.txt
 ```
 
 #### 2. Integrated workflow (Recommended)
 ```bash
-docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \
+docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
   --gene-bed /data/gene.bed \
   --symbol-map /data/symbol_map.bed \
   --sample-file /data/sample_list.txt \
@@ -45,32 +49,26 @@ docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \
 ```
 ##### For detailed help on the integrated workflow:
 ```bash
-docker run --rm maximumko/dapars:1.0.0 run_complete_dapars --help
+docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars --help
 ```
 ## Example Data
 The container includes an example dataset to help you get started with DaPars:
 ```bash
 # Run a shell in the container to copy the example data
-docker run --rm -it -v $(pwd):/data --entrypoint bash maximumko/dapars:1.0.0
+docker run --rm -it -v $(pwd):/data --entrypoint bash ghcr.io/maximumko/dapars-docker:latest
 
 # Then inside the container:
 cp -r /opt/dapars/example_data/* /data/
 exit
 
 # Now you can run DaPars with the example data
-docker run --rm -v $(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \
+docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
   --gene-bed /data/RefSeq_hg19.bed \
   --symbol-map /data/RefSeq_hg19_GeneName.bed \
   --sample-file /data/Example_sample_list.txt \
   --output-dir /data/output
 ```
-## Build Container
-If you prefer to build the container yourself:
-```bash
-git clone https://github.com/maximumko/dapars-docker.git
-cd dapars-docker
-docker build -t maximumko/dapars:1.0.0 .
-```
+
 ## File Format
 Input Files
 DaPars requires the following input files:
