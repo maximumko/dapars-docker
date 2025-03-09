@@ -4,7 +4,7 @@
 function display_logo {
   figlet -f standard "DaPars"
   echo "Dynamic analysis of Alternative PolyAdenylation from RNA-seq"
-  echo "Version 1.0.0"
+  echo "Version 0.1.0"
   echo "=================================================="
 }
 
@@ -14,7 +14,7 @@ function show_help {
   cat << EOF
 
 USAGE:
-  docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \\
+  docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/gene.bed \\
     --symbol-map /data/symbol_map.txt \\
     --sample-file /data/sample_list.txt \\
@@ -30,7 +30,6 @@ OPTIONAL PARAMETERS:
   --coverage INT         Coverage threshold [default: 30]
   --pdui FLOAT           PDUI threshold [default: 0.2]
   --fold-change FLOAT    Fold change threshold (log2) [default: 0.59]
-  --anchor INT           Anchor points in 3'UTR [default: 5]
   --help                 Show this help message and exit
 
 INPUT FILE FORMATS:
@@ -49,14 +48,14 @@ INPUT FILE FORMATS:
 
 EXAMPLES:
   Basic usage:
-  docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \\
+  docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/hg19.bed \\
     --symbol-map /data/gene_map.txt \\
     --sample-file /data/samples.txt \\
     --output-dir /data/results
 
   With custom parameters:
-  docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \\
+  docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/hg19.bed \\
     --symbol-map /data/gene_map.txt \\
     --sample-file /data/samples.txt \\
@@ -67,8 +66,8 @@ EXAMPLES:
 
 Citation:
   Xia, Z., et al. (2014). Dynamic Analyses of Alternative Polyadenylation from 
-  RNA-Seq Reveal 3'-UTR Landscape Across 7 Tumor Types. 
-  Nature Communications, 5:5274
+  RNA-Seq Reveal 3'-UTR Landscape Across Seven Tumor Types. 
+  Nature Communications, 5:5274. PMID: 25409906
 EOF
   exit 0
 }
@@ -84,7 +83,6 @@ OUTPUT_RESULT_FILE="DaPars_results"
 COVERAGE=30
 PDUI=0.2
 FOLD_CHANGE=0.59
-ANCHOR=5
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -118,10 +116,6 @@ while [[ $# -gt 0 ]]; do
       ;;
     --fold-change)
       FOLD_CHANGE="$2"
-      shift 2
-      ;;
-    --anchor)
-      ANCHOR="$2"
       shift 2
       ;;
     *)
@@ -328,6 +322,5 @@ echo "Configuration parameters:"
 echo "- Coverage threshold: $COVERAGE"
 echo "- PDUI threshold: $PDUI"
 echo "- Fold change threshold: $FOLD_CHANGE"
-echo "- Anchor points: $ANCHOR"
 echo
 echo "To view results, check the files in: $OUTPUT_DIR"
