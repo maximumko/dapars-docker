@@ -14,7 +14,8 @@ Supports both x86_64 and ARM64 platforms (works on Apple Silicon Macs)
 # Pull the image 
 docker pull ghcr.io/maximumko/dapars-docker:latest
 
-
+# View usage instructions 
+docker run --rm maximumko/dapars:1.0.0 run_complete_dapars --help
 
 # Run the integrated workflow
 docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
