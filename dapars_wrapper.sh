@@ -4,7 +4,7 @@
 if [[ "$1" == "--help" || "$1" == "-h" ]]; then
   figlet -f standard "DaPars"
   echo "Dynamic analysis of Alternative PolyAdenylation from RNA-seq"
-  echo "Version 1.0.0"
+  echo "Version 0.1.0"
   echo "=================================================="
 
   cat << EOF
@@ -13,18 +13,18 @@ USAGE MODES:
   1. Two-step workflow (original):
      
      Step 1: Generate region annotation
-       docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 \\
+       docker run -it --rm ghcr.io/maximumko/dapars-docker:latest \\
          /opt/dapars/src/DaPars_Extract_Anno.py \\
          -b /data/gene.bed \\
          -s /data/symbol_map.bed \\
          -o /data/extracted_3UTR.bed
 
      Step 2: Run DaPars main analysis
-       docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 \\
+       docker run -it --rm ghcr.io/maximumko/dapars-docker:latest \\
          /data/config_file.txt
 
   2. Integrated workflow (integrated):
-       docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \\
+       docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
          --gene-bed /data/gene.bed \\
          --symbol-map /data/symbol_map.bed \\
          --sample-file /data/sample_list.txt \\
@@ -34,7 +34,7 @@ USAGE MODES:
 
 MORE INFORMATION:
   Detailed help for integrated workflow:
-    docker run --rm maximumko/dapars:1.0.0 run_complete_dapars --help
+    docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars --help
 
   For more details, visit: 
     https://github.com/ZhengXia/dapars
@@ -45,14 +45,14 @@ EXAMPLE DATA:
   To use it, you can mount your current directory and copy the example data:
 
   # Run a shell in the container to copy the example data
-  docker run --rm -it -v \$(pwd):/data --entrypoint bash maximumko/dapars:1.0.0
-  
+  docker run --rm -it -v $(pwd):/data --entrypoint bash ghcr.io/maximumko/dapars-docker:latest
+
   # Then inside the container:
   cp -r /opt/dapars/example_data/* /data/
   exit
 
   # Now you can run DaPars with the example data
-  docker run --rm -v \$(pwd):/data maximumko/dapars:1.0.0 run_complete_dapars \\
+  docker run -it --rm ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/RefSeq_hg19.bed \\
     --symbol-map /data/RefSeq_hg19_GeneName.bed \\
     --sample-file /data/Example_sample_list.txt \\
