@@ -45,7 +45,7 @@ EXAMPLE DATA:
   To use it, you can mount your current directory and copy the example data:
 
   # Run a shell in the container to copy the example data
-  docker run --rm -it -v $(pwd):/data --entrypoint bash ghcr.io/maximumko/dapars-docker:latest
+  docker run --rm -it -v \$(pwd):/data --entrypoint bash ghcr.io/maximumko/dapars-docker:latest
 
   # Then inside the container:
   cp -r /opt/dapars/example_data/* /data/
