@@ -89,7 +89,7 @@ Num_least_in_group2=1
 ```
 
 ## Citation
-If you use DaPars in your research, please cite:
+If you use DaPars-Docker in your research, please cite:
 
 Xia, Z., et al. (2014). Dynamic analyses of alternative polyadenylation from RNA-seq reveal a 3′-UTR landscape across seven tumour types. Nature Communications, 5:5274. PMID: [25409906](https://pubmed.ncbi.nlm.nih.gov/25409906/)
 
