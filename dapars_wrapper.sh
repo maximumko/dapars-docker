@@ -10,7 +10,7 @@ if [[ "$1" == "--help" || "$1" == "-h" ]]; then
   cat << EOF
 
 USAGE MODES:
-  1. Two-step workflow (original):
+  1. Two-step workflow (Original):
      
      Step 1: Generate region annotation
        docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest \\
@@ -23,7 +23,7 @@ USAGE MODES:
        docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest \\
          /data/config_file.txt
 
-  2. Integrated workflow (integrated):
+  2. Integrated workflow (Recommended):
        docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
          --gene-bed /data/gene.bed \\
          --symbol-map /data/symbol_map.bed \\
