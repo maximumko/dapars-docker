@@ -56,7 +56,7 @@ docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_compl
 The container includes an example dataset to help you get started with DaPars:
 ```bash
 # Run a shell in the container to copy the example data
-docker run --rm -it -v $(pwd):/data --entrypoint bash ghcr.io/maximumko/dapars-docker:latest
+docker run --rm -it -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest bash
 
 # Then inside the container:
 cp -r /opt/dapars/example_data/* /data/
