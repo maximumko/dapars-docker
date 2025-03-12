@@ -11,14 +11,18 @@ This repository provides a Docker container for DaPars (Dynamic analysis of Alte
 Supports both x86_64 and ARM64 platforms (works on Apple Silicon Macs)
 
 ```bash
-# Pull the image 
+# Pull the image from Docker Hub
+docker pull maximumko/dapars-docker:latest
+
+# (Alternative) From GitHub Container Registry
 docker pull ghcr.io/maximumko/dapars-docker:latest
 
+
 # View usage instructions 
-docker run -it --rm ghcr.io/maximumko/dapars-docker:latest --help
+docker run -it --rm maximumko/dapars-docker:latest --help
 
 # Run the integrated workflow
-docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
+docker run --rm -v $(pwd):/data maximumko/dapars-docker:latest run_complete_dapars \
   --gene-bed /data/gene.bed \
   --symbol-map /data/symbol_map.txt \
   --sample-file /data/sample_list.txt \
@@ -28,7 +32,7 @@ docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_compl
 #### 1. Two-step workflow (Original)
 ##### Step 1: Generate region annotation
 ```bash
-docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest \
+docker run --rm -v $(pwd):/data maximumko/dapars-docker:latest \
   /opt/dapars/src/DaPars_Extract_Anno.py \
   -b /data/gene.bed \
   -s /data/symbol_map.bed \
@@ -36,13 +40,13 @@ docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest \
 ```
 ##### Step 2: Run DaPars main analysis
 ```bash
-docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest \
+docker run --rm -v $(pwd):/data maximumko/dapars-docker:latest \
   /data/config_file.txt
 ```
 
 #### 2. Integrated workflow (Recommended)
 ```bash
-docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
+docker run --rm -v $(pwd):/data maximumko/dapars-docker:latest run_complete_dapars \
   --gene-bed /data/gene.bed \
   --symbol-map /data/symbol_map.bed \
   --sample-file /data/sample_list.txt \
@@ -50,20 +54,20 @@ docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_compl
 ```
 ##### For detailed help on the integrated workflow:
 ```bash
-docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars --help
+docker run --rm -v $(pwd):/data maximumko/dapars-docker:latest run_complete_dapars --help
 ```
 ## Example Data
 The container includes an example dataset to help you get started with DaPars:
 ```bash
 # Run a shell in the container to copy the example data
-docker run --rm -it -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest bash
+docker run --rm -it -v $(pwd):/data maximumko/dapars-docker:latest bash
 
 # Then inside the container:
 cp -r /opt/dapars/example_data/* /data/
 exit
 
 # Now you can run DaPars with the example data
-docker run --rm -v $(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \
+docker run --rm -v $(pwd):/data maximumko/dapars-docker:latest run_complete_dapars \
   --gene-bed /data/RefSeq_hg19.bed \
   --symbol-map /data/RefSeq_hg19_GeneName.bed \
   --sample-file /data/Example_sample_list.txt \
