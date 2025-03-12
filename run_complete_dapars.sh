@@ -14,7 +14,7 @@ function show_help {
   cat << EOF
 
 USAGE:
-  docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
+  docker run -it --rm -v \$(pwd):/data maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/gene.bed \\
     --symbol-map /data/symbol_map.txt \\
     --sample-file /data/sample_list.txt \\
@@ -48,14 +48,14 @@ INPUT FILE FORMATS:
 
 EXAMPLES:
   Basic usage:
-  docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
+  docker run -it --rm -v \$(pwd):/data maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/hg19.bed \\
     --symbol-map /data/gene_map.txt \\
     --sample-file /data/samples.txt \\
     --output-dir /data/results
 
   With custom parameters:
-  docker run -it --rm -v \$(pwd):/data ghcr.io/maximumko/dapars-docker:latest run_complete_dapars \\
+  docker run -it --rm -v \$(pwd):/data maximumko/dapars-docker:latest run_complete_dapars \\
     --gene-bed /data/hg19.bed \\
     --symbol-map /data/gene_map.txt \\
     --sample-file /data/samples.txt \\
