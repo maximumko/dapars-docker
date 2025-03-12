@@ -80,9 +80,9 @@ DaPars requires the following input files:
 
 Alignment files: Wig files for each sample (referenced in the sample list file)
 
-`--gene-bed` (BED format): Standard 12-column BED file representing gene models; 
-`--symbol-map`: Tab-separated file mapping transcript IDs to gene symbols;
-`--sample-file`: Configuration file specifying file paths for the groups to compare
+- `--gene-bed` (BED format): Standard 12-column BED file representing gene models; 
+- `--symbol-map`: Tab-separated file mapping transcript IDs to gene symbols;
+- `--sample-file`: Configuration file specifying file paths for the groups to compare
 
 The sample list file should contain:
 ```
