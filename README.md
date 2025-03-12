@@ -15,7 +15,7 @@ Supports both x86_64 and ARM64 platforms (works on Apple Silicon Macs)
 docker pull maximumko/dapars-docker:latest
 
 # (Alternative) From GitHub Container Registry
-docker pull ghcr.io/maximumko/dapars-docker:latest
+docker pull maximumko/dapars-docker:latest
 
 
 # View usage instructions 
