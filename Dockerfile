@@ -38,4 +38,4 @@ ENV PYTHONPATH=/opt/dapars
 WORKDIR /data
 
 # Set default command
-CMD ["/usr/local/bin/dapars_wrapper.sh"]
+CMD ["bash", "/usr/local/bin/dapars_wrapper.sh"]
